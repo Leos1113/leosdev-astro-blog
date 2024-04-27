@@ -1,0 +1,16 @@
+---
+import moment from "moment";
+
+interface Props {
+  date: string;
+}
+
+const { date } = Astro.props;
+
+moment.locale("es");
+const formattedDate = moment(date)
+  .format("D-MMMM-YYYY")
+  .replaceAll("-", " de ");
+---
+
+<time>{formattedDate}</time>

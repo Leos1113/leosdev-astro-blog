@@ -1,0 +1,29 @@
+---
+import FormattedDate from "../components/FormattedDate.astro";
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <div
+    class="mx-auto flex flex-col w-full max-w-3xl justify-start px-2 text-slate-300 gap-4 pb-6"
+  >
+    <h2 class="text-3xl text-slate-100 font-semibold">{frontmatter.title}</h2>
+    <slot />
+    <span class="text-right mt-2 mb-6 italic"
+      ><FormattedDate
+        date={frontmatter.pubDate.toString().slice(0, 10)}
+      /></span
+    >
+  </div>
+</Layout>
+
+<style is:global>
+  h3 {
+    @apply text-yellow-100 text-2xl font-semibold;
+  }
+
+  p {
+    @apply mb-2 text-xl;
+  }
+</style>
